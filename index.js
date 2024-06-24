@@ -18,6 +18,7 @@ morgan.token('post', function getPost(req,res){
 
 app.use(express.json())
 app.use(cors())
+app.use(express.static('dist'))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms', {skip: isPost}))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :post',{skip:isNotPost}))
 
