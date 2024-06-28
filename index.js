@@ -22,6 +22,20 @@ app.use(express.static('dist'))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms', {skip: isPost}))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :post',{skip:isNotPost}))
 
+const mongoose = require('mongoose')
+const password = process.argv[2]
+const url = `mongodb+srv://gauravkrtiwari79:${password}@cluster0.bsneo4e.mongodb.net/personApp?retryWrites=true&w=majority&appName=Cluster0`;
+
+mongoose.set('strictQuery',false)
+mongoose.connect(url)
+
+const personSchema = new mongoose.Schema({
+    name:String,
+    number:String,
+})
+
+const Person = mongoose.model('Person', personSchema)
+
 let persons = [
     { 
       "id": "1",
