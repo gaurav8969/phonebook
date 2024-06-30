@@ -8,7 +8,8 @@
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ui": "rm -rf dist && cd ../full-stack-open/part02/phonebook/ && npm run build && cp -r dist ../../../phonebook",
-    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push"
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
+    "lint": "eslint ."
   },
   "author": "Gaurav Tiwari",
   "license": "MIT",
@@ -20,6 +21,10 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.6.0",
+    "@stylistic/eslint-plugin-js": "^2.3.0",
+    "eslint": "^9.6.0",
+    "globals": "^15.6.0",
     "nodemon": "^3.1.4"
   }
 }
