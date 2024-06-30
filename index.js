@@ -103,9 +103,14 @@ app.put('/api/persons/:id',(request, response, next)=>{
         {new:true, runValidators:true, context:'query'}
     )
     .then(updatedContact=>{
+        if(!updatedContact){
+            return response.status(404).json({ error: 'Contact not found' });
+        }
         response.json(updatedContact)
     })
-    .catch(error=>next(error))
+    .catch(error=>{
+        next(error)
+    })
 })
 
 const errorHandler = (error, request, response, next)=>{
